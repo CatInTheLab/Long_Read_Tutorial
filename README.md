@@ -169,13 +169,13 @@ All required software is installed automatically using the supplied `environment
 Clone the repository from GitHub:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/nanopore_analysis.git
+git clone https://github.com/CatInTheLab/Long_Read_Tutorial.git
 ```
 
 Move into the repository:
 
 ```bash
-cd nanopore_analysis
+cd Long_Read_Tutorial
 ```
 
 ---
@@ -200,8 +200,14 @@ Verify that the software has been installed correctly:
 NanoPlot --version
 NanoComp --version
 chopper --version
+rattle --help
+rnaQUAST.py --help
+busco --help
 ```
-
+Navigate to the scripts directory
+```bash
+cd code
+```
 ---
 
 
