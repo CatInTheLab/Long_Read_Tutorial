@@ -1,0 +1,44 @@
+```yaml
+name: nanopore_analysis
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # Python
+  - python=3.11
+
+  # Long-read QC
+  - nanoplot
+  - nanocomp
+  - chopper
+
+  # Transcriptome assembly
+  - rattle
+
+  # Assembly assessment
+  - rnaquast
+  - busco
+
+  # Sequence utilities
+  - seqkit
+  - seqtk
+  - samtools
+  - minimap2
+
+  # Downloading data
+  - sra-tools
+  - wget
+  - curl
+
+  # General utilities
+  - pigz
+  - unzip
+  - gzip
+
+  # Optional Python packages
+  - pandas
+  - matplotlib
+```
