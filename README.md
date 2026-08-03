@@ -1,7 +1,8 @@
 # Long-Read Sequencing Quality Control and Read Filtering Tutorial
 
 ## Overview
-
+ Written by me and ChaptGPT:) 
+ 
 This tutorial introduces the first steps of analysing Oxford Nanopore long-read sequencing data. Before performing downstream analyses such as genome assembly, transcriptome analysis, taxonomic classification or variant detection, it is important to assess the quality of the sequencing reads and remove low-quality data.
 
 This workflow is suitable for both **DNA** and **RNA** Oxford Nanopore sequencing datasets.
@@ -15,9 +16,11 @@ By completing this tutorial, you will learn how to:
 * Filter low-quality and short reads using **Chopper**.
 * Compare the raw and filtered datasets using **NanoComp**.
 
+RNA Transcriptome Specific workflow:
+
 ---
 
-# Workflow
+# 16S DNA Workflow
 
 ```text
 Raw FASTQ (Example dataset, or your basecalled sequencing output from MinKNOW)
@@ -30,6 +33,30 @@ Chopper (Filter low quality / short reads)
     │
     ▼
 NanoComp (Compare the QC of raw and filtered reads)
+```
+
+# RNA Transcriptome Workflow
+
+```text
+Raw FASTQ (Example dataset, or your basecalled sequencing output from MinKNOW)
+    │
+    ▼
+NanoPlot (QC of long reads)
+    │
+    ▼
+Chopper (Filter low quality / short reads)
+    │
+    ▼
+NanoComp (Compare the QC of raw and filtered reads)
+    │
+    ▼
+Rattle (Assembly of long read transcriptome)
+    │
+    ▼
+Quast (QC of transcriptome assembly)
+    │
+    ▼
+BUSCO (QC of transcriptome assembly)
 ```
 
 ---
@@ -98,7 +125,7 @@ madagascar_soil_project
 
 ---
 
-# Repository Structure
+# Repository Structure 
 
 ```text
 nanopore_analysis/
@@ -110,12 +137,12 @@ nanopore_analysis/
 │   └── 03_nanocomp.sh
 ├── raw_data/
 │   ├── raw_reads/
+│   │   ├── SRR32537182_insect_rna.fastq
+│   │   ├── SRR29850036_bacteria_16s.fastq
 │   └── filtered_reads/
 ├── results/
 │   ├── quality_check_raw/
-│   ├── quality_check_filtered/
-│   └── nanocomp/
-└── figures/
+│   ├── quality_check_compaure_filtered/
 ```
 
 ---
@@ -127,6 +154,9 @@ This tutorial uses the following software:
 * NanoPlot
 * NanoComp
 * Chopper
+* Rattle
+* Quast
+* BUSCO
 * Python 3.11
 * Conda
 
@@ -175,14 +205,21 @@ chopper --version
 ---
 
 
-# 4. Example Dataset
+# 3. Example Dataset
 
-The example dataset used in this tutorial is:
+The example 16S DNA dataset used in this tutorial is:
 
 **Rapid library preparation from 16S gene amplified from soil metagenomic DNA isolated from different stages**
 
-The run is stored on NCBI,here: https://www.ncbi.nlm.nih.gov/sra/SRX25347677?utm_source=chatgpt.com.
+The run is stored on NCBI,here: https://www.ncbi.nlm.nih.gov/sra/SRX25347677[accn]
 The SRA ID is SRR29850036. 
+
+The example RNA dataset used in this tutorial is:
+
+**RNAseq of Philippine tarantulas**
+
+The run is stored on NCBI,here: https://www.ncbi.nlm.nih.gov/sra/SRX27848373[accn].
+The SRA ID is SRR32537182. 
 
 The FASTQ file is in the raw_data folder, inside the raw_reads file:
 
@@ -195,13 +232,14 @@ Your project directory should look like this:
 ```text
 raw_data/
 ├── raw_reads/
-│   └── SRR29850036.fastq
+│   └── SRR29850036_bacteria_16s.fastq
+│   └── SRR32537182_insect_rna.fastq
 └── filtered_reads/
 ```
 
 ---
 
-# 5. Quality Control of the Raw Reads
+# 4. Quality Control of the Raw Reads
 
 Run the NanoPlot script:
 
@@ -229,7 +267,7 @@ Open the HTML report in your web browser to explore the interactive plots.
 
 ---
 
-# 6. Filter the Reads
+# 5. Filter the Reads
 
 Run:
 
@@ -252,12 +290,12 @@ These parameters provide a good balance between removing poor-quality reads whil
 
 ---
 
-# 7. Compare Raw and Filtered Reads
+# 6. Compare Raw and Filtered Reads
 
 Run:
 
 ```bash16
-./scripts/04_nanocomp.sh
+./scripts/03_nanocomp.sh
 ```
 
 NanoComp compares the raw and filtered datasets, allowing you to evaluate how filtering affected:
@@ -371,8 +409,7 @@ Possible next steps include:
 
 ### RNA
 
-* Transcriptome alignment
-* Transcript quantification
+* Transcriptome annotation
 
 ### 16S DNA Microbial Communities
 
