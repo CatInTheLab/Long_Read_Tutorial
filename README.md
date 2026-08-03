@@ -101,6 +101,7 @@ Move back one directory:
 cd ..
 ```
 
+
 ---
 
 ## Check that you are in the correct location
@@ -116,6 +117,64 @@ The output should be in a suitable location, like a folder for the Madagascar pr
 ```text
 madagascar_soil_project
 ```
+## Creating and Running Your First Bash Script
+
+Before running the analysis pipelines, it is useful to become familiar with creating and executing a simple Bash script.
+
+### Create a new directory
+
+Create a directory called `code` and move into it:
+
+```bash
+mkdir code
+cd code
+```
+
+### Create a new script
+
+Create a new file called `hello_world.sh` using the Nano text editor:
+
+```bash
+nano hello_world.sh
+```
+
+Copy and paste the following line into the editor:
+
+```bash
+#!/usr/bin/env bash
+
+echo "Hello, world!"
+```
+
+### Save and exit Nano
+
+1. Press **Ctrl + O** to save the file.
+2. Press **Enter** to confirm the filename.
+3. Press **Ctrl + X** to exit Nano.
+
+### Make the script executable
+
+By default, the script cannot be executed. Grant execute permissions using:
+
+```bash
+chmod +x hello_world.sh
+```
+
+### Run the script
+
+Execute the script:
+
+```bash
+./hello_world.sh
+```
+
+The output should be:
+
+```text
+Hello, world!
+```
+
+The remaining scripts in this tutorial are run in exactly the same way.
 
 ---
 
@@ -135,8 +194,8 @@ nanopore_analysis/
 │   │   ├── SRR29850036_bacteria_16s.fastq
 │   └── filtered_reads/
 ├── results/
-│   ├── quality_check_raw/
-│   ├── quality_check_compaure_filtered/
+│   ├── quality_check/raw_reads/
+│   ├── quality_check/compare_raw_filtered/
 ```
 
 ---
@@ -202,6 +261,11 @@ Navigate to the scripts directory
 ```bash
 cd code
 ```
+
+Add permission to all scripts
+```bash
+chmod +x *.sh
+```
 ---
 
 
@@ -238,13 +302,41 @@ raw_data/
 ```
 
 ---
+## Running the Analysis Scripts
+
+All analyses in this tutorial are performed using Bash scripts located in the `code` directory. If you would like to inspect or modify a script before running it, you can open it using the Nano text editor.
+
+For example, to open the first script:
+
+```bash
+nano 01_nanoplot_raw.sh
+```
+
+You can edit any part of the script, such as the input file, output directory, or analysis parameters. Once you have finished making changes:
+
+1. Press **Ctrl + O** to save the file.
+2. Press **Enter** to confirm the filename.
+3. Press **Ctrl + X** to exit Nano.
+
+Run a script using:
+
+```bash
+./01_nanoplot_raw.sh
+```
+
+The script will display its progress in the terminal and write the output files to the appropriate directory specified within the script.
+
+---
+
 
 # 4. Quality Control of the Raw Reads
+
+
 
 Run the NanoPlot script:
 
 ```bash
-./scripts/01_nanoplot_raw.sh
+./01_nanoplot_raw.sh
 ```
 
 NanoPlot provides a comprehensive overview of sequencing quality, including:
@@ -272,7 +364,7 @@ Open the HTML report in your web browser to explore the interactive plots.
 Run:
 
 ```bash
-./scripts/02_chopper.sh
+./02_chopper.sh
 ```
 
 This tutorial filters reads using:
@@ -295,7 +387,7 @@ These parameters provide a good balance between removing poor-quality reads whil
 Run:
 
 ```bash16
-./scripts/03_nanocomp.sh
+./03_nanocomp.sh
 ```
 
 NanoComp compares the raw and filtered datasets, allowing you to evaluate how filtering affected:
