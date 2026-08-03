@@ -95,12 +95,6 @@ Move into a directory:
 cd madagascar_soil_project
 ```
 
-Move into the scripts directory:
-
-```bash
-cd code
-```
-
 Move back one directory:
 
 ```bash
