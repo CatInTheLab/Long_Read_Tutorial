@@ -1,4 +1,3 @@
-```yaml
 name: nanopore_analysis
 
 channels:
@@ -37,7 +36,6 @@ dependencies:
   - pigz
   - unzip
   - gzip
-
   # Optional Python packages
   - pandas
   - matplotlib
