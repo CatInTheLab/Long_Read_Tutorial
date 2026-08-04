@@ -285,7 +285,8 @@ The example RNA dataset used in this tutorial is:
 The run is stored on NCBI,here: https://www.ncbi.nlm.nih.gov/sra/SRX27848373[accn].
 The SRA ID is SRR32537182. 
 
-The FASTQ file is in the raw_data folder, inside the raw_reads file:
+Download your desired dataset and place in the raw_data folder, inside the raw_reads file:
+https://unsw-my.sharepoint.com/:f:/g/personal/z5205630_ad_unsw_edu_au/IgC00uU0acw0T4_b4XSu2BbvAS6u-NsRmxOF_ksZRAGccSo?e=CJy1sy
 
 ```bash
 ls ../raw_data/raw_reads/
