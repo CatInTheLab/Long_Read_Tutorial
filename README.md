@@ -233,7 +233,7 @@ cd Long_Read_Tutorial
 
 ---
 
-# 2. Create the Conda Environment
+# 2. Create the Conda Environment - Windows people using Ubuntu 
 
 Create the Conda environment:
 
@@ -267,6 +267,40 @@ Add permission to all scripts
 chmod +x *.sh
 ```
 ---
+## Create a Conda Environment Manually in VS Code
+
+If you have a mac - this is the workaround for now. Open VS code, then open a terminal. 
+
+Create a new environment called `nanopore_analysis`:
+
+```bash
+conda create -n nanopore_analysis python=3.11
+```
+
+Activate the environment:
+
+```bash
+conda activate nanopore_analysis
+```
+
+Install NanoPlot, NanoComp, and Chopper:
+
+```bash
+conda install -c conda-forge -c bioconda \
+    nanoplot \
+    nanocomp \
+    chopper
+```
+
+Check that the programs installed correctly:
+
+```bash
+NanoPlot --version
+NanoComp --version
+chopper --version
+```
+
+Once these commands return version information, the environment is ready to use.
 
 
 # 3. Example Dataset
