@@ -39,4 +39,3 @@ dependencies:
   # Optional Python packages
   - pandas
   - matplotlib
-```
