@@ -352,7 +352,7 @@ NanoPlot provides a comprehensive overview of sequencing quality, including:
 Results are written to:
 
 ```text
-results/quality_check_raw/
+../results/quality_check/raw_reads/
 ```
 
 Open the HTML report in your web browser to explore the interactive plots.
@@ -402,22 +402,10 @@ NanoComp compares the raw and filtered datasets, allowing you to evaluate how fi
 Results are written to:
 
 ```text
-results/nanocomp/
+../results/quality_check/compare_raw_filtered/
 ```
 
----
 
-# Expected Outputs
-
-After completing the tutorial your directory should resemble:
-
-```text
-results/
-├── quality_check_raw/
-└── nanocomp/
-```
-
----
 
 # Interpreting the Results
 
